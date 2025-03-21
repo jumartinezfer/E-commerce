@@ -1,4 +1,15 @@
-import { Controller } from '@nestjs/common'
+import { Body, Controller, Post } from '@nestjs/common'
+import { AuthService } from './auth.service'
 
 @Controller('auth')
-export class AuthController {}
+export class AuthController {
+  constructor(private readonly authService: AuthService) {}
+
+  @Post('signin')
+  signIn(@Body('email') email: string, @Body('password') password: string) {
+    if (!email || !password) {
+      return 'Email y contraseña son requeridos'
+    }
+    return this.authService.signIn(email, password)
+  }
+}

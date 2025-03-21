@@ -4,7 +4,7 @@ import { UsersService } from './users.service'
 import { usersRepository } from './users.repository'
 
 @Module({
-  controllers: [UsersController],
-  providers: [UsersService, usersRepository],
+  controllers: [UsersController], // son los que manejan la logica del servidor, solicita al servicio la informacion y la devuelve al usuario
+  providers: [UsersService, usersRepository], //permite que los módulos y controladores obtengan instancias de estos sin necesidad de crearlas manualmente.
 })
 export class UsersModule {}
